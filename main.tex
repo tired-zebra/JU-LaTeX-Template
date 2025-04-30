@@ -1,0 +1,135 @@
+% build with pdflatex
+\documentclass[10pt]{book}										% set font size and two-sided margins (consider book tail)
+\usepackage[
+	paperheight=24.2cm,
+	paperwidth=16.5cm,
+	lmargin=26mm,
+	rmargin=20mm,
+	tmargin=25mm,
+	bmargin=25mm,
+	]{geometry}													% set S5 page size and correct margins
+\usepackage[latin1]{inputenc} 									% support for swedish letters in adresses etc.
+\usepackage{amsmath}  											% enables equation environments
+\usepackage{bm}													% enables \bm{} command for bold math
+\usepackage{graphicx} 											% enables \begin{figure} environment
+\usepackage{float} 	  											% enables \begin{figure}[H] forcing of figure position using
+\usepackage{setspace} 											% enables \begin{spacing} environment on front page
+\usepackage{pdfpages} 											% enables direct import of .pdf files
+\usepackage{qrcode}												% enables QR-codes
+\usepackage{xspace}												% enables \xspace for correct spacing after "nth", see \newcommand
+\usepackage{caption}											% for multiple figures side by side (LGI material data)
+\usepackage{subcaption}											% for multiple figures side by side (LGI material data)
+\usepackage{gensymb}											% for \degree command (degree symbol)
+\usepackage{amssymb}											% for \mathbb{R} command (real numbers)
+\usepackage{hyperref}											% for www.ju.se link in "insättningsblad", as well as clickable toc
+\usepackage{multicol}											% enables \begin{multicols} environment for multiple column itemize
+\hypersetup{													% hyperlink setup
+	colorlinks=true,
+	linkcolor=black,
+	filecolor=black,      
+	urlcolor=black,
+	citecolor=black,
+	pdftitle={Multiscale Constitutive Modeling of Heterogeneous Engineering Materials},
+	pdfpagemode=FullScreen,
+}
+\newcommand\tyson{\textsuperscript{th}\xspace} 					% define \tyson command for 5th, 6th, etc...
+\bibliographystyle{ieeetr} 										% changes the bibliography style
+\usepackage{fancyhdr} 											% custom headers and footers
+\pagestyle{fancyplain} 											% all pages conform to custom headers and footers
+\renewcommand{\headrulewidth}{0pt}								% remove ruler in header
+\fancyhead[L]{}													% empty left header
+\fancyhead[C]{}													% empty center header  
+\fancyhead[R]{}													% empty right header
+\fancyhead[LE]{\slshape \nouppercase{\leftmark}}								% show italic header on odd left (L) even (E) pages
+\fancyfoot[C]{} 												% clear center footer
+\fancyfoot[LE,RO]{\thepage} 									% alternate page numbering, left (L) odd (O), and right (R) even (E)
+\newcommand\Tau{\mathcal{T}}
+
+\begin{document}
+%\input{cover.tex}												% thesis cover
+%\input{in.tex}													% insättningsblad
+\frontmatter
+\chapter*{Acknowledgments}
+\addcontentsline{toc}{chapter}{Acknowledgments}  				% include acknowledgments in table of contents
+Acknowledge all of those who made this possible.\\
+
+\noindent A small note. Some thesis have placed the abstract first. Order these sections as you please, but check if there is a new requirement for a specific order.\\
+
+\vspace{20pt}
+
+\noindent Researcher Researcherson\\
+July, 2050
+
+\cleardoublepage
+\vspace*{\fill}  
+\begin{center}
+	\textit{Don't forget GPT is pretty useful for syntax}\\[2ex]  
+	- Some guy (some add quotes here. Could also be a funky image related to the thesis.)
+\end{center}
+\vspace*{\fill}  
+\cleardoublepage
+
+
+\chapter*{Abstract}
+\markboth{Abstract}{Abstract}									% sets page header on both sides to "Abstract"
+\addcontentsline{toc}{chapter}{Abstract} 						% include abstract in table of contents
+\noindent Summarize the area of interest and how you have contributed to it\\
+
+
+\cleardoublepage
+
+\chapter*{Sammanfattning}
+\markboth{Sammanfattning}{Sammanfattning}									% sets page header on both sides to "Sammanfattning"
+\addcontentsline{toc}{chapter}{Sammanfattning} 						% include Sammanfattning in table of contents
+\noindent Summarize the area of interest and how you have contributed to it, but in swedish\\
+
+
+\cleardoublepage
+
+\chapter*{Thesis}
+\markboth{Thesis}{Thesis}									% sets page header on both sides to "Thesis"
+\addcontentsline{toc}{chapter}{Thesis}  								% include Thesis in table of contents
+
+This thesis provides an overview and summary of the following papers:\\
+
+\noindent
+\textbf{Paper I}: \emph{Great Paper Title} by A. Authorson, C. Coauthorson.\vspace{4pt}\\
+Presented at a very nice conference on some date in some location.\vspace{4pt}\\
+\noindent Author contributions: Did some stuff, presented the paper at the conference.\\\vspace{5pt}
+
+\noindent
+Add your papers here.
+
+
+
+\tableofcontents
+\mainmatter
+\input{chapter1.tex}
+\input{chapter2.tex}
+\input{chapter3.tex}
+\input{chapter4.tex}
+\input{chapter5.tex}
+\input{chapter6.tex}
+\bibliography{library}											% imports the bibtex file library.bib
+\addcontentsline{toc}{chapter}{Bibliography}					% adds the bibliography to the table of contents
+
+\markboth{}{} % remove previous chapter header from blank page before chapter start
+\chapter*{Paper I}
+\hrule
+\vspace{12pt}
+\textbf{Title of the Paper} \vspace{6pt}\\
+\noindent \emph{A. Authorsson, C. CoAuthorsson}  \vspace{6pt}\\
+
+\noindent Presented at a very fancy conference on some date in some location.
+\markboth{}{}													% clear page header on both sides
+\addcontentsline{toc}{chapter}{Paper I} 						% include paper I in table of contents
+\cleardoublepage{} 												% makes the next page a right-hand (odd-numbered) page, producing a blank page if necessary.
+\markboth{Paper I}{Paper I}										% sets page header on both sides to "Paper I"
+
+%Comment the next lines out if you want to add PDF's to your thesis. Otherwise send them separately to the printing company.
+
+%\includepdf[pages=-,offset=5mm -3mm,noautoscale = true,scale=.77,pagecommand={\pagestyle{fancyplain}}]{papers/name of the document}
+%\markboth{}{}													% clear page header on both sides
+
+
+\end{document}
